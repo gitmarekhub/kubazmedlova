@@ -183,7 +183,7 @@ header .logo {
 }
 
 .menu.fullscreen a {
-  font-size: 2rem;
+  font-size: 1.4rem; /* bylo 2rem */
 }
 
 .menu.fullscreen .cta {
@@ -684,23 +684,25 @@ button.cta-button.is-disabled {
 }
 
 /* ==================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS – FIX SPACING
    ================================================== */
 
-/* ===== TABLET / SMALL DESKTOP ===== */
+/* ===== TABLET + MOBILE ===== */
 @media (max-width: 990px) {
   /* header */
   header {
     height: 74px;
   }
 
-  /* hero */
+  /* HERO */
   #uvod h1 {
     font-size: clamp(1.6rem, 8vw, 4.2rem);
   }
 
   #uvod h5 {
     font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
   }
 
   .hero-title-center {
@@ -715,23 +717,53 @@ button.cta-button.is-disabled {
     margin-top: 2rem;
   }
 
-  /* sekce */
+  /* SEKCE – obecný vertikální rytmus */
   section {
     padding: 4rem 0;
   }
 
-  /* hero image */
-  .hero-image::before {
-    height: 30px;
+  section h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  section h6 {
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  /* PROJECTS */
+  .project h4 {
+    margin-bottom: 1rem;
+  }
+
+  .project-meta {
+    margin-bottom: 1rem;
+  }
+
+  .project-text {
+    margin-bottom: 2.5rem;
   }
 
   /* VR */
+  #vr h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  #vr h6 {
+    margin-bottom: 2.5rem;
+  }
+
   .vr-wrapper {
     aspect-ratio: 3 / 4;
   }
+
+  /* HERO IMAGE */
+  .hero-image::before {
+    height: 30px;
+  }
 }
 
-/* ===== MOBILE ===== */
+/* ===== MOBILE ONLY ===== */
 @media (max-width: 600px) {
   /* about */
   .about-photo,
@@ -749,4 +781,10 @@ button.cta-button.is-disabled {
     margin-top: 4rem;
     gap: 1.5rem;
   }
+}
+
+/* TELEFON – ZABÍT AUTO LINK STYLY */
+.contact-info h6 {
+  text-decoration: none;
+  color: inherit;
 }
