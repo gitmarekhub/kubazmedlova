@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      3D vizualizace architektury a interiérů | Jakub Marek | kubazmedlova
+    </title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- SWIPER CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <meta
+      name="description"
+      content="Profesionální 3D vizualizace architektury, interiérů a virtuální prohlídky. Pomáhám developerům a architektům prodávat projekty ještě před realizací."
+    />
+
+    <meta
+      property="og:title"
+      content="3D vizualizace architektury | Jakub Marek"
+    />
+    <meta
+      property="og:description"
+      content="Profesionální 3D vizualizace interiérů, architektury a virtuální prohlídky."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kubazmedlova.com/" />
+    <meta
+      property="og:image"
+      content="https://kubazmedlova.com/img/og-cover.jpg"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="container header-inner">
+        <a href="#uvod" class="logo">KUBAZMEDLOVA</a>
+
+        <nav class="menu" aria-label="Hlavní navigace">
+          <a href="#uvod">Úvod</a>
+          <a href="#projekty">Projekty</a>
+          <a href="#vr">Virtuální prohlídka</a>
+          <a href="#o-mne">O mně</a>
+          <a href="#kontakt" class="cta">Kontakt</a>
+        </nav>
+
+        <button
+          class="hamburger"
+          aria-label="Otevřít menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          onclick="toggleMenu(this)"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav
+        class="menu fullscreen"
+        id="mobile-menu"
+        aria-label="Mobilní navigace"
+      >
+        <a href="#uvod">Úvod</a>
+        <a href="#projekty">Projekty</a>
+        <a href="#vr">Virtuální prohlídka</a>
+        <a href="#o-mne">O mně</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="uvod">
+        <div class="container hero">
+          <h1 class="hero-title-left">3D VIZUALIZACE</h1>
+          <h1 class="hero-title-center">ARCHITEKTURY</h1>
+
+          <div class="hero-columns">
+            <div class="hero-col-left"></div>
+
+            <div class="hero-col-right">
+              <h5>
+                Prodám váš byt dřív, než ho postavíte.<br /><br />
+                Vizualizace pro developery, architekty, interiérové designéry a
+                projektanty. Tvořím video průlety, statické snímky a virtuální
+                prohlídky.
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <img
+  src="img/hero-img.webp"
+  alt="Architektonická vizualizace moderního interiéru"
+  decoding="async"
+/>
+
+        </div>
+      </section>
+
+      <section id="projekty">
+        <div class="container">
+          <article class="project">
+            <h4>Moderní byt 3+KK</h4>
+
+            <h6 class="project-meta">
+              Interiér · Vysočina · Rezidenční developerský projekt · 2025
+            </h6>
+
+            <p class="project-text">
+              Byt určený pro menší rodinu vznikl na základě technických podkladů
+              interiérové designérky. Cílem bylo vytvořit prostor, který pomůže
+              budoucím klientům lépe si představit dispozici, materiály a
+              atmosféru bytu.
+            </p>
+
+            <div class="project-gallery">
+              <div class="project-swiper swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="img/2_3KK.webp"
+                      alt="Chodba moderního bytu 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/3_3KK.webp"
+                      alt="Koupelna v moderním bytě 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/4_3KK.webp"
+                      alt="Ložnice moderního bytu 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/5_3KK.webp"
+                      alt="Dětský pokoj v bytě 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/6_3KK.webp"
+                      alt="Kuchyňská linka v moderním bytě 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/7_3KK.webp"
+                      alt="Obývací pokoj moderního bytu 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/8_3KK.webp"
+                      alt="Kuchyně propojená s obývacím prostorem – byt 3+KK"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  class="gallery-arrow prev swiper-button-prev"
+                  aria-label="Předchozí obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  class="gallery-arrow next swiper-button-next"
+                  aria-label="Další obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project project--spaced">
+            <h4>Moderní byt 2+KK</h4>
+
+            <h6 class="project-meta">
+              Interiér · Vysočina · Rezidenční developerský projekt · 2025
+            </h6>
+
+            <p class="project-text">
+              Další projekt na základě podkladů interiérové designérky. Menší
+              byt pro pár nebo jednotlivce ve stejné lokalitě.
+            </p>
+
+            <div class="project-gallery">
+              <div class="project-swiper swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="img/1_2KK.webp"
+                      alt="Chodba moderního bytu 2+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/2_2KK.webp"
+                      alt="Šatna v bytě 2+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/3_2KK.webp"
+                      alt="Samostatné WC v bytě 2+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/4_2KK.webp"
+                      alt="Koupelna moderního bytu 2+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/5_2KK.webp"
+                      alt="Ložnice v moderním bytě 2+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/6_2KK.webp"
+                      alt="Obývací pokoj s kuchyní – byt 2+KK"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/7_2KK.webp"
+                      alt="Kuchyně v moderním bytě 2+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  class="gallery-arrow prev swiper-button-prev"
+                  aria-label="Předchozí obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  class="gallery-arrow next swiper-button-next"
+                  aria-label="Další obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <h4>Rekonstrukce koupelny</h4>
+
+            <h6 class="project-meta">
+              Interiér · Morava · Privátní rezidenční projekt · 2024/2025
+            </h6>
+
+            <p class="project-text">
+              Kompletní provedení rekonstrukce koupelny dle požadavků klientky.
+              Od návrhu, přes vizualizace až po realizaci nábytku na míru.
+            </p>
+
+            <div class="project-gallery">
+              <div class="project-swiper swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="img/2_KOUPELNA.webp"
+                      alt="Moderní koupelna – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/1_KOUPELNA.webp"
+                      alt="Detail koupelny s umyvadlem – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/7_KOUPELNA.webp"
+                      alt="Sprchový kout v moderní koupelně – vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/4_KOUPELNA.webp"
+                      alt="Koupelnový nábytek na míru – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/5_KOUPELNA.webp"
+                      alt="Detail obkladů v koupelně – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/8_KOUPELNA.webp"
+                      alt="Celkový pohled na moderní koupelnu – vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/6_KOUPELNA.webp"
+                      alt="Atmosféra moderní koupelny – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  class="gallery-arrow prev swiper-button-prev"
+                  aria-label="Předchozí obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  class="gallery-arrow next swiper-button-next"
+                  aria-label="Další obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="vr">
+        <div class="container">
+          <h2>Virtuální prohlídka</h2>
+          <h6>
+            Virtuální prohlídka je nejbližší možná forma prezentace budoucího
+            bytu. Zájemce se může procházet prostorem, pochopit dispozici,
+            měřítko i atmosféru interiéru ještě před stavbou.
+            <br /><br />
+            Vyzkoušejte si ji sami níže.
+          </h6>
+
+          <div class="vr-wrapper">
+            <iframe src="vr/index.html" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="vr-cta">
+            <h5>Máte zájem o virtuální prohlídku vašeho projektu?</h5>
+            <a href="#kontakt" class="cta-button">Kontaktujte mě</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="o-mne">
+        <div class="container">
+          <h2>Kdo jsem, co dělám a proč to funguje?</h2>
+
+          <h6 class="section-intro">
+            3D vizualizace interiérů a exteriérů • Virtuální prohlídky • Video
+            průlety • Postprodukce &amp; optimalizace
+          </h6>
+
+          <div class="about-grid">
+            <!-- LEVÝ SLOUPEC – FOTO -->
+            <div class="about-photo">
+              <img
+                src="img/portrait.webp"
+                alt="Portrét 3D designéra Jakuba Marka"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- PRAVÝ SLOUPEC – TEXT -->
+            <div class="about-content">
+              <div class="about-box">
+                <h5>O mně &amp; mé práci</h5>
+                <h6>
+                  Jsem 3D designér zaměřený na vizualizaci architektury a
+                  interiérů. Pomáhám developerům, architektům a designérům
+                  prezentovat projekty tak, aby se lépe prodávaly ještě před
+                  realizací.
+                </h6>
+              </div>
+
+              <div class="about-box">
+                <h5>Jak pracuji</h5>
+                <h6>
+                  Dodávám vizualizace rychle, v dohodnutém termínu a s
+                  konzistentní kvalitou, přičemž spojuji technickou přesnost s
+                  vizuální kvalitou – pracuji jak z představy, tak z milimetrově
+                  přesných CAD výkresů.
+                </h6>
+              </div>
+
+              <div class="about-box">
+                <h5>Co mohu nabídnout</h5>
+                <h6>
+                  Ve scénách používám reálně existující produkty od světových
+                  značek, což zvyšuje realismus a umožňuje lépe odhadnout
+                  finální cenu a možnosti realizace. Technická přesnost je
+                  základ, ale vizualizace musí hlavně zaujmout a fungovat pro
+                  lidi.
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="kontakt">
+        <div class="container">
+          <!-- oddělovací čára -->
+          <div class="section-divider"></div>
+
+          <div class="contact-grid">
+            <!-- LEVÁ STRANA -->
+            <div class="contact-left">
+              <h4>
+                Máte zájem o konzultaci, nebo nezávaznou cenovou nabídku?
+                Napište mi.
+              </h4>
+
+              <div class="contact-info">
+                <div class="contact-item">
+                  <h5>Mail:</h5>
+                  <h6>kubazmedlova@seznam.cz</h6>
+                </div>
+
+                <div class="contact-item">
+                  <h5>Tel:</h5>
+                  <h6>+420 725 554 553</h6>
+                </div>
+              </div>
+            </div>
+
+            <!-- PRAVÁ STRANA -->
+            <div class="contact-right">
+              <form
+                class="contact-form"
+                id="contact-form"
+                novalidate
+                aria-describedby="form-success"
+              >
+                <!-- honeypot -->
+                <input
+                  type="text"
+                  name="company"
+                  tabindex="-1"
+                  autocomplete="off"
+                  aria-hidden="true"
+                />
+
+                <input type="text" name="name" placeholder="Jméno" required />
+
+                <input type="email" name="email" placeholder="Email" required />
+
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Zpráva"
+                  required
+                ></textarea>
+
+                <!-- ⬅️ BUTTON MÍSTO A -->
+                <button type="submit" class="cta-button">Odeslat zprávu</button>
+
+                <!-- success message -->
+                <div class="form-success" id="form-success" aria-live="polite">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    class="success-icon"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                    />
+                  </svg>
+                  <p>Vaše zpráva byla úspěšně odeslána.</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a
+            href="https://www.facebook.com/profile.php?id=61559583764573"
+            target="_blank"
+            rel="noopener"
+          >
+            <h6>Facebook</h6>
+          </a>
+
+          <a
+            href="https://jakubmarek57.artstation.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            <h6>Art Station</h6>
+          </a>
+
+          <a
+            href="https://www.instagram.com/kubazmedlova/#"
+            target="_blank"
+            rel="noopener"
+          >
+            <h6>Instagram</h6>
+          </a>
+
+          <a href="https://kubazmedlova.com/" target="_blank" rel="noopener">
+            <h6>Personal Portfolio</h6>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <small>© 2025 kubazmedlova - Jakub Marek</small>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script src="js/carousel.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/form.js"></script>
+  </body>
+</html>

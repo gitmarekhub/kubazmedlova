@@ -1,0 +1,760 @@
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --base: 1rem;
+  --gap: 50px;
+  --text-color: #191919;
+}
+
+.container {
+  width: 80vw;
+  margin-inline: auto;
+}
+
+/* === LAYOUT FIX PRO FOOTER === */
+html,
+body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter Tight", sans-serif;
+  font-size: var(--base);
+  line-height: 1.4;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  flex: 1;
+}
+/* === END LAYOUT FIX === */
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 4.5vw, 4.6rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  font-weight: 500;
+}
+
+h4 {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 500;
+}
+
+h5 {
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  font-weight: 500;
+}
+
+h6 {
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+  font-weight: 400;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+
+  padding-block: 1rem;
+  display: flex;
+  align-items: center;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+header.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+header .logo {
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logo:hover,
+.logo:focus,
+.logo:active,
+.logo:visited {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* ===== MAIN NAVIGATION ===== */
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.menu a {
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.menu .cta {
+  border: 1px solid #000;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* hamburger – default hidden */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: #191919;
+  border-radius: 2px;
+}
+
+/* ===== MOBILE FULLSCREEN MENU ===== */
+.menu.fullscreen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 100;
+}
+
+.menu.fullscreen a {
+  font-size: 2rem;
+}
+
+.menu.fullscreen .cta {
+  border: none;
+}
+
+/* aktivní mobilní menu */
+.menu.fullscreen.active {
+  display: flex;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 990px) {
+  .menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* HERO */
+#uvod .hero {
+  padding-top: 6rem;
+}
+
+#uvod h1 {
+  line-height: 1.05;
+  font-size: clamp(4.5rem, 7.5vw, 9.3rem);
+  font-style: italic;
+}
+
+#uvod h5 {
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  margin-bottom: 3rem;
+}
+
+/* TITULKY */
+.hero-title-left {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.hero-title-center {
+  margin-top: 0.1rem;
+  text-align: center;
+}
+
+/* 2 SLOUPCE POD ARCHITEKTURY */
+.hero-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 3rem;
+}
+
+.hero-col-right h5 {
+  margin: 0;
+  max-width: 60ch;
+  text-align: left;
+}
+
+.hero-columns {
+  grid-template-columns: 1fr;
+}
+
+.hero-col-right {
+  margin-top: 2rem;
+}
+
+/* FOOTER */
+footer {
+  background: var(--text-color);
+  color: #fff;
+}
+
+footer .container {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* MEZERA MEZI SEKCEMI */
+section {
+  padding: 9rem 0;
+}
+
+/* ===== PROJECT SPACING ===== */
+.project--spaced {
+  margin: 6rem 0;
+}
+
+/* === SWIPER FIX (FREEFRONTEND + TVŮJ ORIGINÁL) === */
+
+/* layout wrapper – žádný swiper init tady */
+.project-gallery {
+  position: relative;
+  width: 100%;
+  margin-top: 2.5rem;
+  isolation: isolate;
+}
+
+/* skutečný swiper viewport */
+.project-swiper {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* KRITICKÉ */
+}
+
+/* swiper internals */
+.project-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.project-swiper .swiper-slide {
+  flex-shrink: 0; /* POVINNÉ */
+  aspect-ratio: 3 / 4; /* ZACHOVÁNÍ POMĚRU */
+}
+
+/* obrázky */
+.project-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ZABÍT DEFAULT SWIPER UI */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+/* === GALERIE – ŠIPKY (INSPIROVÁNO PŮVODNÍM VZHLEDEM) === */
+
+/* wrapper */
+.project-gallery .gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateY(8px); /* ⬅️ OPTICKÉ DOVYROVNÁNÍ */
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 30;
+
+  /* ⬅️ TADY JE FIX BARVY */
+  color: #ffffff;
+
+  /* jistota proti swiper defaultům */
+  pointer-events: auto;
+}
+
+/* SVG */
+.project-gallery .gallery-arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+
+  /* stejný feel jako původní */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+}
+
+/* pozice – NESAHAJ DO STRAN */
+.project-gallery .gallery-arrow.prev {
+  left: 1rem;
+}
+
+.project-gallery .gallery-arrow.next {
+  right: 1rem;
+}
+
+.menu a {
+  position: relative;
+}
+
+.menu a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.vr-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 3rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.vr-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.vr-cta {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.vr-cta h5 {
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cta-button:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* === CTA BUTTON – NORMALIZACE PRO <button> === */
+button.cta-button {
+  all: unset; /* smaže browser defaulty */
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: normal;
+
+  padding: 0.75rem 1.75rem;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* hover – STEJNÉ JAKO <a> */
+button.cta-button:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* disabled stav – funguje pro button */
+button.cta-button:disabled,
+button.cta-button.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  background: linear-gradient(
+    to bottom,
+    #fffffa 0%,
+    rgba(255, 255, 250, 0.85) 30%,
+    rgba(255, 255, 250, 0) 100%
+  );
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SEKCE O MNĚ + FOTKA */
+
+.about-grid {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap; /* KLÍČ */
+}
+
+/* LEVÝ / PRAVÝ SLOUPEC */
+.about-photo,
+.about-content {
+  flex: 1 1 520px; /* jakmile není místo → padá dolů */
+  min-height: clamp(420px, 45vw, 560px); /* STEJNÁ VÝŠKA */
+}
+
+/* FOTO */
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TEXT */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* BOX */
+.about-box:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.about-box h5 {
+  margin-bottom: 1.25rem;
+}
+
+.about-box h6 {
+  line-height: 1.6;
+}
+
+.about-photo img {
+  height: auto;
+  object-fit: contain;
+}
+
+.section-intro {
+  margin-bottom: 5rem;
+}
+
+/*FORMULÁŘ A KONTAKT SEKCE */
+/* oddělení sekce */
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: var(--text-color);
+  opacity: 0.85;
+  margin-bottom: 6rem;
+}
+
+/* grid kontaktu */
+.contact-grid {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1 1 420px;
+}
+
+/* levá strana */
+.contact-left h4 {
+  margin-bottom: 3rem;
+}
+
+.contact-info .contact-item:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+/* formulář */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* inputy */
+.contact-form input,
+.contact-form textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.9rem 0.75rem;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom-width: 2px;
+}
+
+/* placeholder */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(25, 25, 25, 0.55);
+}
+
+/* honeypot */
+.contact-form input[name="company"] {
+  position: absolute;
+  left: -9999px;
+}
+
+/* disabled stav – JEN když to přidá JS */
+.contact-form .cta-button.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* success message */
+.form-success {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  color: #1a7f37;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  position: relative;
+  pointer-events: none;
+}
+
+.form-success.is-visible {
+  display: flex;
+  opacity: 1;
+}
+
+.form-success.fade-out {
+  opacity: 0;
+}
+
+.success-icon {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.contact-form .cta-button {
+  align-self: flex-end;
+}
+
+.contact-form .cta-button.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.contact-socials a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.contact-socials h6 {
+  font-weight: 400;
+  position: relative;
+}
+
+.contact-socials h6::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.contact-socials a:hover h6::after {
+  width: 100%;
+}
+
+.contact-socials {
+  margin-top: 7rem;
+  margin-bottom: 0;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+#kontakt {
+  padding-bottom: 2rem;
+}
+
+/* ==================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================== */
+
+/* ===== TABLET / SMALL DESKTOP ===== */
+@media (max-width: 990px) {
+  /* header */
+  header {
+    height: 74px;
+  }
+
+  /* hero */
+  #uvod h1 {
+    font-size: clamp(1.6rem, 8vw, 4.2rem);
+  }
+
+  #uvod h5 {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+  }
+
+  .hero-title-center {
+    text-align: left;
+  }
+
+  .hero-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-col-right {
+    margin-top: 2rem;
+  }
+
+  /* sekce */
+  section {
+    padding: 4rem 0;
+  }
+
+  /* hero image */
+  .hero-image::before {
+    height: 30px;
+  }
+
+  /* VR */
+  .vr-wrapper {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  /* about */
+  .about-photo,
+  .about-content {
+    min-height: auto;
+  }
+
+  .about-photo img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* socials */
+  .contact-socials {
+    margin-top: 4rem;
+    gap: 1.5rem;
+  }
+}
