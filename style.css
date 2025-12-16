@@ -96,8 +96,8 @@ header {
 }
 
 header.hidden {
-  transform: translateY(-100%);
   opacity: 0;
+  pointer-events: none;
 }
 
 header .logo {
@@ -173,15 +173,16 @@ header .logo {
 .menu.fullscreen {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background: #fffffa;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .menu.fullscreen a {
