@@ -86,7 +86,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 100;
-  background: #fff;
+  background: #fffffa;
 
   padding-block: 1rem;
   display: flex;
@@ -149,6 +149,8 @@ header .logo {
 
 /* hamburger – default hidden */
 .hamburger {
+  position: relative;
+  z-index: 1000;
   display: none;
   flex-direction: column;
   justify-content: space-around;
@@ -174,7 +176,7 @@ header .logo {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: #fff;
+  background: #fffffa;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -249,7 +251,7 @@ header .logo {
 /* FOOTER */
 footer {
   background: var(--text-color);
-  color: #fff;
+  color: #fffffa;
 }
 
 footer .container {
@@ -317,11 +319,11 @@ section {
 
 /* === GALERIE – ŠIPKY (INSPIROVÁNO PŮVODNÍM VZHLEDEM) === */
 
-/* wrapper */
-.project-gallery .gallery-arrow {
+.project-swiper .gallery-arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%) translateY(8px); /* ⬅️ OPTICKÉ DOVYROVNÁNÍ */
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
   width: 48px;
   height: 48px;
   padding: 0;
@@ -329,11 +331,7 @@ section {
   border: none;
   cursor: pointer;
   z-index: 30;
-
-  /* ⬅️ TADY JE FIX BARVY */
-  color: #ffffff;
-
-  /* jistota proti swiper defaultům */
+  color: #fffffa;
   pointer-events: auto;
 }
 
@@ -346,15 +344,6 @@ section {
 
   /* stejný feel jako původní */
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
-}
-
-/* pozice – NESAHAJ DO STRAN */
-.project-gallery .gallery-arrow.prev {
-  left: 1rem;
-}
-
-.project-gallery .gallery-arrow.next {
-  right: 1rem;
 }
 
 .menu a {
@@ -410,7 +399,7 @@ section {
 
 .cta-button:hover {
   background: #000;
-  color: #fff;
+  color: #fffffa;
 }
 
 /* === CTA BUTTON – NORMALIZACE PRO <button> === */
@@ -421,7 +410,6 @@ button.cta-button {
   font-size: inherit;
   font-weight: 500;
   line-height: normal;
-
   padding: 0.75rem 1.75rem;
   border: 1px solid #000;
   border-radius: 4px;
@@ -433,7 +421,7 @@ button.cta-button {
 /* hover – STEJNÉ JAKO <a> */
 button.cta-button:hover {
   background: #000;
-  color: #fff;
+  color: #fffffa;
 }
 
 /* disabled stav – funguje pro button */
@@ -762,4 +750,9 @@ button.cta-button.is-disabled {
 .contact-info h6 {
   text-decoration: none;
   color: inherit;
+}
+
+.contact-mail {
+  color: inherit;
+  text-decoration: none;
 }
