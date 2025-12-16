@@ -498,6 +498,13 @@ button.cta-button.is-disabled {
   display: block;
 }
 
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* TEXT */
 .about-content {
   display: flex;
@@ -516,11 +523,6 @@ button.cta-button.is-disabled {
 
 .about-box h6 {
   line-height: 1.6;
-}
-
-.about-photo img {
-  height: auto;
-  object-fit: contain;
 }
 
 .section-intro {
@@ -769,11 +771,6 @@ button.cta-button.is-disabled {
   .about-photo,
   .about-content {
     min-height: auto;
-  }
-
-  .about-photo img {
-    height: auto;
-    object-fit: contain;
   }
 
   /* socials */
