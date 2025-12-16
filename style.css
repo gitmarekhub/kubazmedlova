@@ -679,7 +679,7 @@ button.cta-button.is-disabled {
 }
 
 /* ==================================================
-   RESPONSIVE BREAKPOINTS – FIX SPACING
+   RESPONSIVE BREAKPOINTS – CLEAN VERSION
    ================================================== */
 
 /* ===== TABLET + MOBILE ===== */
@@ -712,7 +712,7 @@ button.cta-button.is-disabled {
     margin-top: 2rem;
   }
 
-  /* SEKCE – obecný vertikální rytmus */
+  /* SEKCE – JEDNOTNÝ RYTMUS */
   section {
     padding: 4rem 0;
   }
@@ -723,38 +723,17 @@ button.cta-button.is-disabled {
 
   section h6 {
     line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
-  /* PROJECTS */
-  .project h4 {
-    margin-bottom: 1rem;
-  }
-
-  .project-meta {
-    margin-bottom: 1rem;
-  }
-
-  .project-text {
-    margin-bottom: 2.5rem;
-  }
-
-  /* VR */
-  #vr h2 {
-    margin-bottom: 1.25rem;
-  }
-
-  #vr h6 {
-    margin-bottom: 2.5rem;
-  }
-
-  .vr-wrapper {
-    aspect-ratio: 3 / 4;
+    margin-bottom: 1.6rem;
   }
 
   /* HERO IMAGE */
   .hero-image::before {
     height: 30px;
+  }
+
+  /* VR – jen poměr, žádný spacing */
+  .vr-wrapper {
+    aspect-ratio: 3 / 4;
   }
 }
 
@@ -770,6 +749,12 @@ button.cta-button.is-disabled {
   .contact-socials {
     margin-top: 4rem;
     gap: 1.5rem;
+  }
+
+  /* GALERIE – MENŠÍ ŠIPKY */
+  .project-gallery .gallery-arrow {
+    width: 28px;
+    height: 28px;
   }
 }
 
