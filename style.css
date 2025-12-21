@@ -644,23 +644,23 @@ button.cta-button.is-disabled {
   color: var(--text-color);
 }
 
-.contact-socials h6 {
-  font-weight: 400;
+.contact-socials p {
+  font-weight: 300;
   position: relative;
 }
 
-.contact-socials h6::after {
+.contact-socials p::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
   width: 0;
-  height: 2px;
+  height: 1px;
   background: currentColor;
   transition: width 0.25s ease;
 }
 
-.contact-socials a:hover h6::after {
+.contact-socials a:hover p::after {
   width: 100%;
 }
 
