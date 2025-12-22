@@ -77,7 +77,7 @@ var APP_DATA = {
           "yaw": -0.023689358223387913,
           "pitch": 0.5042362458396568,
           "rotation": 0,
-          "target": "2-zrcadlo"
+          "target": "2-chodba---sted"
         },
         {
           "yaw": 2.798672098145257,
@@ -92,8 +92,8 @@ var APP_DATA = {
           "target": "5-lonice---vstup"
         },
         {
-          "yaw": 0.5796575725133906,
-          "pitch": 0.5984507687062166,
+          "yaw": 0.5606685673109553,
+          "pitch": 0.5841617306103064,
           "rotation": 0,
           "target": "7-dtsk-pokoj---vstup"
         }
@@ -101,8 +101,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "2-zrcadlo",
-      "name": "Zrcadlo",
+      "id": "2-chodba---sted",
+      "name": "Chodba - Střed",
       "levels": [
         {
           "tileSize": 256,
@@ -227,7 +227,7 @@ var APP_DATA = {
           "yaw": 1.6928011774877119,
           "pitch": 0.8297149824151404,
           "rotation": 0,
-          "target": "2-zrcadlo"
+          "target": "2-chodba---sted"
         }
       ],
       "infoHotspots": []
@@ -310,6 +310,12 @@ var APP_DATA = {
           "pitch": 0.510260302662104,
           "rotation": 0,
           "target": "5-lonice---vstup"
+        },
+        {
+          "yaw": 1.6240390524386523,
+          "pitch": 0.2919102517906822,
+          "rotation": 0,
+          "target": "1-chodba"
         }
       ],
       "infoHotspots": []
@@ -392,6 +398,12 @@ var APP_DATA = {
           "pitch": 0.537536507306033,
           "rotation": 0,
           "target": "7-dtsk-pokoj---vstup"
+        },
+        {
+          "yaw": 2.782331938328406,
+          "pitch": 0.28681456367104374,
+          "rotation": 0,
+          "target": "1-chodba"
         }
       ],
       "infoHotspots": []
@@ -435,7 +447,7 @@ var APP_DATA = {
           "yaw": -2.9131466038012857,
           "pitch": 0.6951194482013605,
           "rotation": 0,
-          "target": "2-zrcadlo"
+          "target": "2-chodba---sted"
         }
       ],
       "infoHotspots": []
@@ -479,7 +491,7 @@ var APP_DATA = {
       "infoHotspots": []
     }
   ],
-  "name": "Project Title",
+  "name": "3KK_VR",
   "settings": {
     "mouseViewMode": "drag",
     "autorotateEnabled": true,
