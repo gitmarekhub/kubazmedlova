@@ -876,3 +876,19 @@ button.cta-button.is-disabled {
 #custom-lb-close:hover {
   opacity: 1;
 }
+
+/* LIGHTBOX – mobil */
+@media (max-width: 768px) {
+  #custom-lb-prev,
+  #custom-lb-next {
+    display: none;
+  }
+}
+
+/* Odstranit černý čtverec při tapu na tlačítka (iOS/Android) */
+#custom-lb-prev,
+#custom-lb-next,
+#custom-lb-close {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}

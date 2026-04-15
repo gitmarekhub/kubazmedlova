@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         prevEl: el.querySelector(".swiper-button-prev"),
       },
       breakpoints: {
-        0: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
+        0:    { slidesPerView: 1 },
+        768:  { slidesPerView: 2 },
         1024: { slidesPerView: 3 },
       },
     });
@@ -38,22 +38,29 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(overlay);
 
   const lbOverlay = document.getElementById("custom-lb-overlay");
-  const lbImg = document.getElementById("custom-lb-img");
-  const lbPrev = document.getElementById("custom-lb-prev");
-  const lbNext = document.getElementById("custom-lb-next");
-  const lbClose = document.getElementById("custom-lb-close");
+  const lbImg     = document.getElementById("custom-lb-img");
+  const lbPrev    = document.getElementById("custom-lb-prev");
+  const lbNext    = document.getElementById("custom-lb-next");
+  const lbClose   = document.getElementById("custom-lb-close");
 
-  let currentUrls = [];
+  let currentUrls  = [];
   let currentIndex = 0;
-  let isAnimating = false;
+  let isAnimating  = false;
+
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
 
   function openLightbox(urls, index) {
-    currentUrls = urls;
-    currentIndex = index;
-    lbImg.src = currentUrls[currentIndex];
-    lbImg.style.opacity = "1";
+    currentUrls            = urls;
+    currentIndex           = index;
+    lbImg.src              = currentUrls[currentIndex];
+    lbImg.style.opacity    = "1";
     lbImg.style.transition = "";
-    isAnimating = false;
+    isAnimating            = false;
+    // Skryj šipky na mobilu
+    lbPrev.style.display = isMobile() ? "none" : "";
+    lbNext.style.display = isMobile() ? "none" : "";
     lbOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -61,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeLightbox() {
     lbOverlay.classList.remove("active");
     document.body.style.overflow = "";
-    lbImg.src = "";
-    lbImg.style.opacity = "1";
+    lbImg.src              = "";
+    lbImg.style.opacity    = "1";
     lbImg.style.transition = "";
-    isAnimating = false;
+    isAnimating            = false;
   }
 
   function changeTo(newIndex) {
@@ -74,54 +81,88 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextIndex = (newIndex + currentUrls.length) % currentUrls.length;
 
     lbImg.style.transition = "opacity 0.5s ease";
-    lbImg.style.opacity = "0";
+    lbImg.style.opacity    = "0";
 
     setTimeout(() => {
-      lbImg.src = currentUrls[nextIndex];
+      lbImg.src           = currentUrls[nextIndex];
       lbImg.style.opacity = "1";
 
       setTimeout(() => {
         lbImg.style.transition = "";
-        lbImg.style.opacity = "1";
-        currentIndex = nextIndex;
-        isAnimating = false;
+        lbImg.style.opacity    = "1";
+        currentIndex           = nextIndex;
+        isAnimating            = false;
       }, 500);
     }, 500);
   }
 
-  function showNext() {
-    changeTo(currentIndex + 1);
-  }
-  function showPrev() {
-    changeTo(currentIndex - 1);
-  }
+  function showNext() { changeTo(currentIndex + 1); }
+  function showPrev() { changeTo(currentIndex - 1); }
 
-  lbNext.addEventListener("click", (e) => {
-    e.stopPropagation();
-    showNext();
-  });
-  lbPrev.addEventListener("click", (e) => {
-    e.stopPropagation();
-    showPrev();
-  });
+  // Desktop šipky
+  lbNext.addEventListener("click",  (e) => { e.stopPropagation(); showNext(); });
+  lbPrev.addEventListener("click",  (e) => { e.stopPropagation(); showPrev(); });
   lbClose.addEventListener("click", () => closeLightbox());
   lbOverlay.addEventListener("click", (e) => {
     if (e.target === lbOverlay) closeLightbox();
   });
 
+  // Keyboard desktop
   document.addEventListener("keydown", (e) => {
     if (!lbOverlay.classList.contains("active")) return;
     if (e.key === "ArrowRight") showNext();
-    if (e.key === "ArrowLeft") showPrev();
-    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft")  showPrev();
+    if (e.key === "Escape")     closeLightbox();
   });
 
+  // ── TOUCH SWIPE (mobil) ──────────────────────────────────────
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  lbOverlay.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  lbOverlay.addEventListener("touchend", (e) => {
+    if (!lbOverlay.classList.contains("active")) return;
+
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    // Swipe jen pokud horizontální pohyb > vertikální a > 40px
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) showNext();
+      else        showPrev();
+      return;
+    }
+
+    // Tap na tmavý overlay (ne na img) = zavři
+    if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && e.target === lbOverlay) {
+      closeLightbox();
+    }
+  }, { passive: true });
+
+  // ── FIX: rotace obrazovky ────────────────────────────────────
+  window.addEventListener("orientationchange", () => {
+    if (!lbOverlay.classList.contains("active")) return;
+    const src = lbImg.src;
+    lbImg.src = "";
+    setTimeout(() => {
+      lbImg.src              = src;
+      lbImg.style.opacity    = "1";
+      lbPrev.style.display   = isMobile() ? "none" : "";
+      lbNext.style.display   = isMobile() ? "none" : "";
+    }, 150);
+  });
+
+  // Kliky na galerii
   document.querySelectorAll(".project-swiper").forEach((el) => {
     const originalSlides = el.querySelectorAll(
-      ".swiper-slide:not(.swiper-slide-duplicate)",
+      ".swiper-slide:not(.swiper-slide-duplicate)"
     );
     const urls = Array.from(originalSlides).map((s) =>
-      s.querySelector("img").getAttribute("src"),
+      s.querySelector("img").getAttribute("src")
     );
     originalSlides.forEach((slide, i) => {
       const img = slide.querySelector("img");
