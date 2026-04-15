@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ── SWIPER (BEZE ZMĚNY) ─────────────────────────
   document.querySelectorAll(".project-swiper").forEach((el) => {
     new Swiper(el, {
       loop: true,
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ── LIGHTBOX ────────────────────────────────────
   const lb = document.getElementById("lb");
   const track = document.getElementById("lb-track");
 
@@ -32,14 +34,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let isZooming = false;
   let translateX = 0;
   let translateY = 0;
+  let initialScale = 1;
 
   let activeImg = null;
+
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
 
   function openLightbox(urls, startIndex) {
     images = urls;
     index = startIndex;
+
     buildSlides();
     setPosition(index, false);
+
     lb.classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -51,9 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildSlides() {
     track.innerHTML = "";
-    const extended = [images[images.length-1], ...images, images[0]];
 
-    extended.forEach(src=>{
+    const extended = [
+      images[images.length - 1],
+      ...images,
+      images[0],
+    ];
+
+    extended.forEach(src => {
       const slide = document.createElement("div");
       slide.className = "lb-slide";
 
@@ -68,166 +82,194 @@ document.addEventListener("DOMContentLoaded", () => {
       track.appendChild(slide);
     });
 
-    activeImg = track.children[index+1].querySelector("img");
+    activeImg = track.children[index + 1].querySelector("img");
     resetZoom();
   }
 
-  function setPosition(i, animate=true){
-    track.style.transition = animate?"transform 0.3s ease":"none";
-    track.style.transform = `translateX(${-(i+1)*100}%)`;
+  function setPosition(i, animate = true) {
+    track.style.transition = animate ? "transform 0.3s ease" : "none";
+    track.style.transform = `translateX(${-(i + 1) * 100}%)`;
 
-    setTimeout(()=>{
-      activeImg = track.children[index+1].querySelector("img");
+    setTimeout(() => {
+      activeImg = track.children[index + 1].querySelector("img");
       resetZoom();
-    },50);
+    }, 50);
   }
 
-  function next(){
+  function next() {
     index++;
     setPosition(index);
 
-    if(index>=images.length){
-      setTimeout(()=>{
-        track.style.transition="none";
-        index=0;
-        setPosition(index,false);
-      },300);
+    if (index >= images.length) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        index = 0;
+        setPosition(index, false);
+      }, 300);
     }
   }
 
-  function prev(){
+  function prev() {
     index--;
     setPosition(index);
 
-    if(index<0){
-      setTimeout(()=>{
-        track.style.transition="none";
-        index=images.length-1;
-        setPosition(index,false);
-      },300);
+    if (index < 0) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        index = images.length - 1;
+        setPosition(index, false);
+      }, 300);
     }
   }
 
-  function resetZoom(){
-    scale=1;
-    translateX=0;
-    translateY=0;
+  function resetZoom() {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
     applyTransform();
   }
 
-  function applyTransform(){
-    if(!activeImg) return;
+  function applyTransform() {
+    if (!activeImg) return;
+
     activeImg.style.transform =
-      `translate(${translateX}px,${translateY}px) scale(${scale})`;
+      `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   }
 
-  function getDistance(t){
-    const dx=t[0].clientX-t[1].clientX;
-    const dy=t[0].clientY-t[1].clientY;
-    return Math.sqrt(dx*dx+dy*dy);
+  function getDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
   }
 
-  track.addEventListener("touchstart",e=>{
-    if(e.touches.length===2){
-      isZooming=true;
-      startDist=getDistance(e.touches);
+  // ── TOUCH START ─────────────────────────
+  track.addEventListener("touchstart", e => {
+    if (!isMobile()) return;
+
+    if (e.touches.length === 2) {
+      isZooming = true;
+      startDist = getDistance(e.touches);
+      initialScale = scale;
       return;
     }
 
-    if(scale>1){
-      startX=e.touches[0].clientX-translateX;
+    if (scale > 1) {
+      startX = e.touches[0].clientX - translateX;
       return;
     }
 
-    isDragging=true;
-    startX=e.touches[0].clientX;
+    isDragging = true;
+    startX = e.touches[0].clientX;
   });
 
-  track.addEventListener("touchmove",e=>{
-    if(isZooming && e.touches.length===2){
-      const newDist=getDistance(e.touches);
-      scale*=newDist/startDist;
-      scale=Math.max(1,Math.min(scale,4));
-      startDist=newDist;
+  // ── TOUCH MOVE ─────────────────────────
+  track.addEventListener("touchmove", e => {
+    if (!isMobile()) return;
+
+    // pinch zoom
+    if (isZooming && e.touches.length === 2) {
+      const newDist = getDistance(e.touches);
+
+      let nextScale = initialScale * (newDist / startDist);
+      scale = Math.max(1, Math.min(nextScale, 4));
+
       applyTransform();
       return;
     }
 
-    if(scale>1){
-      translateX=e.touches[0].clientX-startX;
+    // drag při zoomu
+    if (scale > 1) {
+      translateX = e.touches[0].clientX - startX;
       applyTransform();
       return;
     }
 
-    if(!isDragging) return;
+    if (!isDragging) return;
 
-    currentX=e.touches[0].clientX;
-    const dx=currentX-startX;
+    currentX = e.touches[0].clientX;
+    const dx = currentX - startX;
 
-    track.style.transition="none";
+    track.style.transition = "none";
     track.style.transform =
-      `translateX(calc(${-(index+1)*100}% + ${dx}px))`;
+      `translateX(calc(${-(index + 1) * 100}% + ${dx}px))`;
   });
 
-  track.addEventListener("touchend",()=>{
-    if(isZooming){
-      isZooming=false;
+  // ── TOUCH END ─────────────────────────
+  track.addEventListener("touchend", () => {
+    if (!isMobile()) return;
+
+    if (isZooming) {
+      isZooming = false;
       return;
     }
 
-    if(scale>1) return;
+    if (scale > 1) return;
 
-    isDragging=false;
+    isDragging = false;
 
-    const dx=currentX-startX;
+    const dx = currentX - startX;
 
-    if(Math.abs(dx)>80){
-      dx<0 ? next() : prev();
+    if (Math.abs(dx) > 80) {
+      dx < 0 ? next() : prev();
     } else {
       setPosition(index);
     }
   });
 
-  let lastTap=0;
+  // ── DOUBLE TAP ─────────────────────────
+  let lastTap = 0;
 
-  track.addEventListener("touchend",()=>{
-    const now=Date.now();
+  track.addEventListener("touchend", () => {
+    if (!isMobile()) return;
 
-    if(now-lastTap<300){
-      if(scale===1){
-        scale=2;
+    const now = Date.now();
+
+    if (now - lastTap < 300) {
+      if (scale === 1) {
+        scale = 2;
       } else {
         resetZoom();
       }
       applyTransform();
     }
 
-    lastTap=now;
+    lastTap = now;
   });
 
-  track.addEventListener("click",e=>{
-    if(window.innerWidth<=768) return;
+  // ── DESKTOP CLICK ──────────────────────
+  track.addEventListener("click", e => {
+    if (isMobile()) return;
 
-    const x=e.clientX;
-    const half=window.innerWidth/2;
+    const x = e.clientX;
+    const half = window.innerWidth / 2;
 
-    x>half ? next() : prev();
+    x > half ? next() : prev();
+  });
+
+  // ── CLOSE ─────────────────────────────
+  lb.addEventListener("click", e => {
+    if (e.target === lb) closeLightbox();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeLightbox();
   });
 
   document.getElementById("lb-close").onclick = closeLightbox;
 
-  document.querySelectorAll(".project-swiper").forEach(el=>{
-    const slides=el.querySelectorAll(
+  // ── INIT ──────────────────────────────
+  document.querySelectorAll(".project-swiper").forEach(el => {
+    const slides = el.querySelectorAll(
       ".swiper-slide:not(.swiper-slide-duplicate)"
     );
 
-    const urls=Array.from(slides).map(s =>
+    const urls = Array.from(slides).map(s =>
       s.querySelector("img").src
     );
 
-    slides.forEach((slide,i)=>{
+    slides.forEach((slide, i) => {
       slide.querySelector("img").onclick =
-        () => openLightbox(urls,i);
+        () => openLightbox(urls, i);
     });
   });
 
