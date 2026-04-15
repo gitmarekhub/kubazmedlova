@@ -54,13 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function openLightbox(urls, index) {
     currentUrls            = urls;
     currentIndex           = index;
+    // Reset všeho před otevřením
+    lbImg.style.cssText    = "";
     lbImg.src              = currentUrls[currentIndex];
-    lbImg.style.opacity    = "1";
-    lbImg.style.transition = "";
     isAnimating            = false;
-    // Skryj šipky na mobilu
-    lbPrev.style.display = isMobile() ? "none" : "";
-    lbNext.style.display = isMobile() ? "none" : "";
+    lbPrev.style.display   = isMobile() ? "none" : "";
+    lbNext.style.display   = isMobile() ? "none" : "";
     lbOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -69,8 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lbOverlay.classList.remove("active");
     document.body.style.overflow = "";
     lbImg.src              = "";
-    lbImg.style.opacity    = "1";
-    lbImg.style.transition = "";
+    lbImg.style.cssText    = "";
     isAnimating            = false;
   }
 
@@ -80,26 +78,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nextIndex = (newIndex + currentUrls.length) % currentUrls.length;
 
-    lbImg.style.transition = "opacity 0.5s ease";
+    lbImg.style.transition = "opacity 0.4s ease";
     lbImg.style.opacity    = "0";
 
     setTimeout(() => {
-      lbImg.src           = currentUrls[nextIndex];
-      lbImg.style.opacity = "1";
-
+      lbImg.src              = currentUrls[nextIndex];
+      lbImg.style.opacity    = "1";
       setTimeout(() => {
         lbImg.style.transition = "";
-        lbImg.style.opacity    = "1";
         currentIndex           = nextIndex;
         isAnimating            = false;
-      }, 500);
-    }, 500);
+      }, 400);
+    }, 400);
   }
 
   function showNext() { changeTo(currentIndex + 1); }
   function showPrev() { changeTo(currentIndex - 1); }
 
-  // Desktop šipky
   lbNext.addEventListener("click",  (e) => { e.stopPropagation(); showNext(); });
   lbPrev.addEventListener("click",  (e) => { e.stopPropagation(); showPrev(); });
   lbClose.addEventListener("click", () => closeLightbox());
@@ -107,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === lbOverlay) closeLightbox();
   });
 
-  // Keyboard desktop
   document.addEventListener("keydown", (e) => {
     if (!lbOverlay.classList.contains("active")) return;
     if (e.key === "ArrowRight") showNext();
@@ -115,45 +109,58 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape")     closeLightbox();
   });
 
-  // ── TOUCH SWIPE (mobil) ──────────────────────────────────────
-  let touchStartX = 0;
-  let touchStartY = 0;
+  // ── TOUCH – pouze swipe, ne pinch/zoom ──────────────────────
+  let touchStartX  = 0;
+  let touchStartY  = 0;
+  let touchStartDist = 0;
+  let isPinching   = false;
+
+  function getTouchDist(e) {
+    if (e.touches.length < 2) return 0;
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
 
   lbOverlay.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
+    if (e.touches.length === 2) {
+      isPinching     = true;
+      touchStartDist = getTouchDist(e);
+    } else {
+      isPinching  = false;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  lbOverlay.addEventListener("touchmove", (e) => {
+    if (e.touches.length === 2) isPinching = true;
   }, { passive: true });
 
   lbOverlay.addEventListener("touchend", (e) => {
     if (!lbOverlay.classList.contains("active")) return;
+    if (isPinching) { isPinching = false; return; }
 
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
 
-    // Swipe jen pokud horizontální pohyb > vertikální a > 40px
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    // Swipe jen při jednoznačném horizontálním pohybu > 60px
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 60) {
       if (dx < 0) showNext();
       else        showPrev();
-      return;
-    }
-
-    // Tap na tmavý overlay (ne na img) = zavři
-    if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && e.target === lbOverlay) {
-      closeLightbox();
     }
   }, { passive: true });
 
-  // ── FIX: rotace obrazovky ────────────────────────────────────
+  // ── Rotace obrazovky ─────────────────────────────────────────
   window.addEventListener("orientationchange", () => {
     if (!lbOverlay.classList.contains("active")) return;
-    const src = lbImg.src;
+    const src = currentUrls[currentIndex];
     lbImg.src = "";
     setTimeout(() => {
-      lbImg.src              = src;
-      lbImg.style.opacity    = "1";
-      lbPrev.style.display   = isMobile() ? "none" : "";
-      lbNext.style.display   = isMobile() ? "none" : "";
-    }, 150);
+      lbImg.src            = src;
+      lbPrev.style.display = isMobile() ? "none" : "";
+      lbNext.style.display = isMobile() ? "none" : "";
+    }, 200);
   });
 
   // Kliky na galerii

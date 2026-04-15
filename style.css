@@ -797,29 +797,26 @@ button.cta-button.is-disabled {
 #custom-lb-overlay {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.92);
   z-index: 9999;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
 #custom-lb-overlay.active {
-  display: flex;
+  display: grid;
+  place-items: center;
 }
 
 #custom-lb-img {
   max-width: 90vw;
   max-height: 85vh;
-  width: auto;
-  height: auto;
   object-fit: contain;
   display: block;
   user-select: none;
-  flex-shrink: 0;
 }
 
 #custom-lb-prev,
@@ -841,6 +838,8 @@ button.cta-button.is-disabled {
   transition: opacity 0.2s;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
   z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 #custom-lb-prev:hover,
@@ -848,12 +847,8 @@ button.cta-button.is-disabled {
   opacity: 1;
 }
 
-#custom-lb-prev {
-  left: 1.5rem;
-}
-#custom-lb-next {
-  right: 1.5rem;
-}
+#custom-lb-prev { left: 1.5rem; }
+#custom-lb-next { right: 1.5rem; }
 
 #custom-lb-prev svg,
 #custom-lb-next svg {
@@ -876,24 +871,17 @@ button.cta-button.is-disabled {
   transition: opacity 0.2s;
   line-height: 1;
   z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 #custom-lb-close:hover {
   opacity: 1;
 }
 
-/* LIGHTBOX – mobil */
 @media (max-width: 768px) {
   #custom-lb-prev,
   #custom-lb-next {
     display: none;
   }
-}
-
-/* Odstranit černý čtverec při tapu na tlačítka (iOS/Android) */
-#custom-lb-prev,
-#custom-lb-next,
-#custom-lb-close {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
 }
