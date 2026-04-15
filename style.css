@@ -309,6 +309,10 @@ section {
   margin-top: 6rem;
 }
 
+.project-swiper img {
+  cursor: zoom-in;
+}
+
 #projekty {
   padding-bottom: calc(var(--section-space) + 4rem);
 }
@@ -792,7 +796,6 @@ button.cta-button.is-disabled {
     font-size: 1.8rem;
   }
 }
-
 
 /* ── LIGHTBOX FIXED ── */
 

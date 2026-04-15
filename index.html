@@ -15,7 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/photoswipe@5/dist/photoswipe.css"
+    />
     <!-- SWIPER CSS -->
     <link
       rel="stylesheet"
@@ -767,13 +770,38 @@
     <script src="js/navigation.js" defer></script>
     <script src="js/header.js" defer></script>
     <script src="js/form.js" defer></script>
-  
-  <div id="lb">
-    <button id="lb-close">×</button>
-    <div id="lb-viewport">
-      <div id="lb-track"></div>
-    </div>
-  </div>
+    <script type="module">
+import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
 
-</body>
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '.project-swiper',
+  children: 'img',
+  pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js'),
+});
+
+lightbox.init();
+</script>
+    </script>
+    <script>
+      document.querySelectorAll(".project-swiper img").forEach((img) => {
+        if (img.complete) {
+          setSize(img);
+        } else {
+          img.onload = () => setSize(img);
+        }
+      });
+
+      function setSize(img) {
+        img.setAttribute("data-pswp-width", img.naturalWidth);
+        img.setAttribute("data-pswp-height", img.naturalHeight);
+      }
+    </script>
+
+    <div id="lb">
+      <button id="lb-close">×</button>
+      <div id="lb-viewport">
+        <div id="lb-track"></div>
+      </div>
+    </div>
+  </body>
 </html>
