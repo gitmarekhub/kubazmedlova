@@ -797,43 +797,34 @@ button.cta-button.is-disabled {
 #custom-lb-overlay {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.92);
   z-index: 9999;
+  overflow: hidden;
 }
 
 #custom-lb-overlay.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
-/* Viewport – kontejner pro obrázek a zoom */
-#custom-lb-viewport {
-  position: relative;
-  width: 100%;
+/* Strip: 3 fotky vedle sebe (prev | cur | next), každá 100vw */
+#custom-lb-strip {
+  display: flex;
+  width: 300%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  touch-action: none;
+  transform: translateX(-100%);
+  will-change: transform;
 }
 
-#custom-lb-img {
-  max-width: 90vw;
-  max-height: 85vh;
-  width: auto;
-  height: auto;
+.lb-slide {
+  width: calc(100% / 3);
+  height: 100%;
   object-fit: contain;
   display: block;
   user-select: none;
   -webkit-user-drag: none;
-  transform-origin: center center;
-  will-change: transform;
+  flex-shrink: 0;
 }
 
 /* Desktop šipky */
@@ -842,72 +833,42 @@ button.cta-button.is-disabled {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+  width: 48px; height: 48px;
+  background: none; border: none;
+  color: #fff; cursor: pointer;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   opacity: 0.85;
   transition: opacity 0.2s;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
   z-index: 10;
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
-
 #custom-lb-prev:hover,
 #custom-lb-next:hover { opacity: 1; }
-
 #custom-lb-prev { left: 1.5rem; }
 #custom-lb-next { right: 1.5rem; }
-
 #custom-lb-prev svg,
 #custom-lb-next svg {
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
-  display: block;
+  width: 100%; height: 100%;
+  fill: currentColor; display: block;
 }
 
 #custom-lb-close {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.6rem;
-  cursor: pointer;
-  opacity: 0.85;
+  top: 1rem; right: 1rem;
+  background: none; border: none;
+  color: #fff; font-size: 1.8rem;
+  cursor: pointer; opacity: 0.85;
   transition: opacity 0.2s;
-  line-height: 1;
-  z-index: 20;
+  line-height: 1; z-index: 20;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
-  padding: 0.5rem;
+  outline: none; padding: 0.5rem;
 }
-
 #custom-lb-close:hover { opacity: 1; }
 
-/* Mobil – bez šipek, fullscreen */
 @media (max-width: 768px) {
   #custom-lb-prev,
-  #custom-lb-next {
-    display: none;
-  }
-
-  #custom-lb-img {
-    max-width: 100vw;
-    max-height: 100vh;
-  }
-
-  #custom-lb-viewport {
-    width: 100vw;
-    height: 100vh;
-  }
+  #custom-lb-next { display: none; }
 }
