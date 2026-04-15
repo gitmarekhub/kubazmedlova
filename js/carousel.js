@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ── SWIPER (BEZE ZMĚNY) ─────────────────────────
   document.querySelectorAll(".project-swiper").forEach((el) => {
     new Swiper(el, {
       loop: true,
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ── LIGHTBOX ────────────────────────────────────
   const lb = document.getElementById("lb");
   const track = document.getElementById("lb-track");
 
@@ -71,14 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const slide = document.createElement("div");
       slide.className = "lb-slide";
 
-      const wrap = document.createElement("div");
-      wrap.className = "lb-img-wrap";
-
       const img = document.createElement("img");
       img.src = src;
 
-      wrap.appendChild(img);
-      slide.appendChild(wrap);
+      slide.appendChild(img);
       track.appendChild(slide);
     });
 
@@ -142,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.sqrt(dx * dx + dy * dy);
   }
 
-  // ── TOUCH START ─────────────────────────
   track.addEventListener("touchstart", e => {
     if (!isMobile()) return;
 
@@ -162,24 +155,29 @@ document.addEventListener("DOMContentLoaded", () => {
     startX = e.touches[0].clientX;
   });
 
-  // ── TOUCH MOVE ─────────────────────────
   track.addEventListener("touchmove", e => {
     if (!isMobile()) return;
 
-    // pinch zoom
     if (isZooming && e.touches.length === 2) {
       const newDist = getDistance(e.touches);
+      const ratio = newDist / startDist;
 
-      let nextScale = initialScale * (newDist / startDist);
+      let nextScale = initialScale * ratio;
       scale = Math.max(1, Math.min(nextScale, 4));
 
       applyTransform();
       return;
     }
 
-    // drag při zoomu
     if (scale > 1) {
-      translateX = e.touches[0].clientX - startX;
+      const moveX = e.touches[0].clientX;
+      const moveY = e.touches[0].clientY;
+
+      translateX += moveX - startX;
+      translateY += moveY - startX;
+
+      startX = moveX;
+
       applyTransform();
       return;
     }
@@ -194,7 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `translateX(calc(${-(index + 1) * 100}% + ${dx}px))`;
   });
 
-  // ── TOUCH END ─────────────────────────
   track.addEventListener("touchend", () => {
     if (!isMobile()) return;
 
@@ -216,7 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ── DOUBLE TAP ─────────────────────────
   let lastTap = 0;
 
   track.addEventListener("touchend", () => {
@@ -236,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
     lastTap = now;
   });
 
-  // ── DESKTOP CLICK ──────────────────────
   track.addEventListener("click", e => {
     if (isMobile()) return;
 
@@ -246,7 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
     x > half ? next() : prev();
   });
 
-  // ── CLOSE ─────────────────────────────
   lb.addEventListener("click", e => {
     if (e.target === lb) closeLightbox();
   });
@@ -257,7 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("lb-close").onclick = closeLightbox;
 
-  // ── INIT ──────────────────────────────
   document.querySelectorAll(".project-swiper").forEach(el => {
     const slides = el.querySelectorAll(
       ".swiper-slide:not(.swiper-slide-duplicate)"
