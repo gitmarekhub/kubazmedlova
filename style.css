@@ -798,6 +798,8 @@ button.cta-button.is-disabled {
   display: none;
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.92);
   z-index: 9999;
   align-items: center;
@@ -810,11 +812,14 @@ button.cta-button.is-disabled {
 }
 
 #custom-lb-img {
-  max-width: 88vw;
-  max-height: 88vh;
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
   user-select: none;
+  flex-shrink: 0;
 }
 
 #custom-lb-prev,
