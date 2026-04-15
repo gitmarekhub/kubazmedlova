@@ -672,14 +672,27 @@
                   aria-hidden="true"
                 />
 
-                <input type="text" name="name" placeholder="Jméno" required />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Jméno"
+                  autocomplete="name"
+                  required
+                />
 
-                <input type="email" name="email" placeholder="Email" required />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  autocomplete="email"
+                  required
+                />
 
                 <textarea
                   name="message"
                   rows="5"
                   placeholder="Zpráva"
+                  autocomplete="off"
                   required
                 ></textarea>
 
