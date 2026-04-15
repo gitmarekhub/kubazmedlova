@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ── SWIPER (galerie na stránce) ──────────────────────────────
+  // ── SWIPER ──────────────────────────────────────────────────
   document.querySelectorAll(".project-swiper").forEach((el) => {
     new Swiper(el, {
       loop: true,
@@ -19,27 +19,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ── PHOTOSWIPE LIGHTBOX ──────────────────────────────────────
-  // Sbere všechny galerie a připraví data pro PhotoSwipe
+  // Cache rozměrů obrázků aby se nenačítaly znovu
+  const sizeCache = {};
+
+  function getImageSize(src) {
+    return new Promise((resolve) => {
+      if (sizeCache[src]) {
+        resolve(sizeCache[src]);
+        return;
+      }
+      const img = new Image();
+      img.onload = () => {
+        sizeCache[src] = { w: img.naturalWidth, h: img.naturalHeight };
+        resolve(sizeCache[src]);
+      };
+      img.onerror = () => {
+        resolve({ w: 1200, h: 1600 }); // fallback
+      };
+      img.src = src;
+    });
+  }
+
   document.querySelectorAll(".project-swiper").forEach((swiperEl) => {
     const originalSlides = swiperEl.querySelectorAll(
       ".swiper-slide:not(.swiper-slide-duplicate)"
     );
 
-    // Každý obrázek dostane cursor a klik handler
+    // Předem načti rozměry všech obrázků v galerii
+    originalSlides.forEach((slide) => {
+      const src = slide.querySelector("img").getAttribute("src");
+      getImageSize(src); // spustí cache na pozadí
+    });
+
     originalSlides.forEach((slide, i) => {
       const img = slide.querySelector("img");
       img.style.cursor = "zoom-in";
 
-      img.addEventListener("click", () => {
-        // Sestavíme pole všech fotek z téhle galerie
-        const items = Array.from(originalSlides).map((s) => {
-          const image = s.querySelector("img");
-          return {
-            src: image.getAttribute("src"),
-            w: image.naturalWidth  || image.width  || 1200,
-            h: image.naturalHeight || image.height || 1600,
-          };
-        });
+      img.addEventListener("click", async () => {
+        const urls = Array.from(originalSlides).map((s) =>
+          s.querySelector("img").getAttribute("src")
+        );
+
+        // Načti rozměry všech fotek (z cache pokud dostupné)
+        const items = await Promise.all(
+          urls.map(async (src) => {
+            const size = await getImageSize(src);
+            return { src, w: size.w, h: size.h };
+          })
+        );
 
         const pswp = document.querySelector(".pswp");
 
@@ -47,17 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
           index: i,
           bgOpacity: 0.95,
           showHideOpacity: true,
-          // Desktop: šipky viditelné
-          arrowEl: true,
-          // Mobil: šipky skryté (přes CSS)
           closeOnScroll: false,
-          // Zoom
           maxSpreadZoom: 4,
           getDoubleTapZoom: (isMouseClick, item) => {
             if (isMouseClick) return item.initialZoomLevel < 0.7 ? 1 : 1.5;
             return item.initialZoomLevel < 0.7 ? 1 : 1.33;
           },
-          // Animace při otevření/zavření
           showAnimationDuration: 200,
           hideAnimationDuration: 200,
         };
