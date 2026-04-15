@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-  // SWIPER (BEZE ZMĚNY)
+  // SWIPER
   document.querySelectorAll(".project-swiper").forEach((el) => {
     new Swiper(el, {
       loop: true,
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 👉 FIX: obalit IMG do <a> automaticky (aby fungoval PhotoSwipe)
+  // 1. WRAP IMG → A
   document.querySelectorAll(".project-swiper img").forEach(img => {
     if (img.parentElement.tagName !== "A") {
       const link = document.createElement("a");
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 👉 FIX: doplnění rozměrů (nutné pro zoom)
+  // 2. SIZE FIX (nutné pro zoom)
   document.querySelectorAll(".project-swiper img").forEach(img => {
     if (img.complete) {
       setSize(img);
@@ -42,5 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
     img.setAttribute("data-pswp-width", img.naturalWidth);
     img.setAttribute("data-pswp-height", img.naturalHeight);
   }
+
+  // 3. PHOTOSWIPE INIT (SPRÁVNĚ)
+  const { default: PhotoSwipeLightbox } = await import(
+    'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js'
+  );
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.project-swiper',
+    children: 'a',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js'),
+  });
+
+  lightbox.init();
 
 });
