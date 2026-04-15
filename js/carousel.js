@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", async () => {
+import PhotoSwipeLightbox from "https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js";
 
-  // SWIPER
+document.addEventListener("DOMContentLoaded", () => {
+  // SWIPER (jen layout)
   document.querySelectorAll(".project-swiper").forEach((el) => {
     new Swiper(el, {
       loop: true,
@@ -11,49 +12,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         prevEl: el.querySelector(".swiper-button-prev"),
       },
       breakpoints: {
-        0:{slidesPerView:1},
-        768:{slidesPerView:2},
-        1024:{slidesPerView:3},
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
       },
     });
   });
 
-  // 1. WRAP IMG → A
-  document.querySelectorAll(".project-swiper img").forEach(img => {
-    if (img.parentElement.tagName !== "A") {
-      const link = document.createElement("a");
-      link.href = img.src;
-
-      img.parentNode.insertBefore(link, img);
-      link.appendChild(img);
-    }
+  // SIZE FIX (nutný pro správný zoom)
+  document.querySelectorAll(".pswp-item img").forEach((img) => {
+    if (img.complete) fix(img);
+    else img.onload = () => fix(img);
   });
 
-  // 2. SIZE FIX (nutné pro zoom)
-  document.querySelectorAll(".project-swiper img").forEach(img => {
-    if (img.complete) {
-      setSize(img);
-    } else {
-      img.onload = () => setSize(img);
-    }
-  });
-
-  function setSize(img) {
-    img.setAttribute("data-pswp-width", img.naturalWidth);
-    img.setAttribute("data-pswp-height", img.naturalHeight);
+  function fix(img) {
+    const a = img.parentElement;
+    a.dataset.pswpWidth = img.naturalWidth;
+    a.dataset.pswpHeight = img.naturalHeight;
   }
 
-  // 3. PHOTOSWIPE INIT (SPRÁVNĚ)
-  const { default: PhotoSwipeLightbox } = await import(
-    'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js'
-  );
-
+  // PHOTOSWIPE
   const lightbox = new PhotoSwipeLightbox({
-    gallery: '.project-swiper',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js'),
+    gallery: ".project-swiper",
+    children: ".pswp-item",
+    pswpModule: () =>
+      import("https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"),
   });
 
   lightbox.init();
-
 });
