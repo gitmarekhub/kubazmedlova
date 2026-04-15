@@ -10,9 +10,7 @@
 
     <link rel="icon" type="image/png" href="img/icon-web.png" />
     <link rel="apple-touch-icon" href="img/icon-web.png" />
-
     <link rel="stylesheet" href="style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,6 +45,7 @@
     />
 
     <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="https://kubazmedlova.cz/" />
   </head>
 
   <body>
@@ -67,7 +66,6 @@
           aria-label="Otevřít menu"
           aria-controls="mobile-menu"
           aria-expanded="false"
-          onclick="toggleMenu(this)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,47 +95,62 @@
 
     <main>
       <section id="uvod">
-        <div class="container hero">
-          <h1 class="hero-title-left">3D VIZUALIZACE</h1>
-          <h1 class="hero-title-center">ARCHITEKTURY</h1>
-
-          <div class="hero-columns">
-            <div class="hero-col-left"></div>
-
-            <div class="hero-col-right">
-              <h5>
-                Prodám váš byt dřív, než ho postavíte.<br /><br />
-                Vizualizace pro developery, architekty, interiérové designéry a
-                projektanty. Tvořím video průlety, statické snímky a virtuální
-                prohlídky.
-              </h5>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-image">
+        <div class="hero">
           <img
             src="img/hero-img.webp"
             alt="Architektonická vizualizace moderního interiéru"
-            decoding="async"
+            class="hero-bg"
+            fetchpriority="high"
           />
+
+          <div class="hero-content">
+            <div class="container">
+              <div class="hero-text">
+                <h1 class="hero-title-left">3D VIZUALIZACE</h1>
+                <h1 class="hero-title-center">ARCHITEKTURY</h1>
+              </div>
+
+              <div class="hero-columns">
+                <div class="hero-col-left"></div>
+
+                <div class="hero-col-right">
+                  <h5>
+                    Prodám váš byt dřív, než ho postavíte.<br /><br />
+                    Vizualizace pro developery, architekty, interiérové
+                    designéry a projektanty. Tvořím video průlety, statické
+                    snímky a virtuální prohlídky.
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="projekty">
         <div class="container">
+          <h2>Projekty</h2>
+
+          <h6>
+            Vybrané projekty 3D vizualizací pro architekty, developery i
+            soukromé klienty. Zajímají vás projekty z komerčního nebo instore
+            segmentu, které nejsou veřejně dostupné? Neváhejte mě kontaktovat.
+          </h6>
+
           <article class="project">
-            <h4>Moderní byt 3+KK</h4>
+            <h4>Bytové a komerční centrum VIVA</h4>
 
             <h6 class="project-meta">
-              Interiér · Vysočina · Rezidenční developerský projekt · 2025
+              Interiér / Exteriér · Žďár nad Sázavou · Rezidenční a komerční
+              projekt · 2026
             </h6>
 
             <p class="project-text">
-              Byt určený pro menší rodinu vznikl na základě technických podkladů
-              interiérové designérky - Ing. Simony Avratové. Cílem bylo vytvořit
-              prostor, který pomůže budoucím klientům lépe si představit
-              dispozici, materiály a atmosféru bytu.
+              Projekt VIVA kombinuje bydlení, komerční prostory a občanskou
+              vybavenost. Přízemí tvoří retail, 2. a 3. patro komerční prostory,
+              vyšší podlaží klidová rezidenční zóna. Součástí vizualizací jsou
+              vstupní prostory se schodištěm a propojené byty s terasami ve 4. a
+              5. patře.
             </p>
 
             <div class="project-gallery">
@@ -145,58 +158,47 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <img
-                      src="img/2_3KK.webp"
-                      alt="Chodba moderního bytu 3+KK – interiérová vizualizace"
+                      src="img/EX_01.webp"
+                      alt="Exteriér bytového centra VIVA – vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-viva"
                     />
                   </div>
                   <div class="swiper-slide">
                     <img
-                      src="img/3_3KK.webp"
-                      alt="Koupelna v moderním bytě 3+KK – interiérová vizualizace"
+                      src="img/EX_02.webp"
+                      alt="Exteriér bytového centra VIVA – vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-viva"
                     />
                   </div>
                   <div class="swiper-slide">
                     <img
-                      src="img/4_3KK.webp"
-                      alt="Ložnice moderního bytu 3+KK – interiérová vizualizace"
+                      src="img/EX_03.webp"
+                      alt="Exteriér bytového centra VIVA – vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-viva"
                     />
                   </div>
                   <div class="swiper-slide">
                     <img
-                      src="img/5_3KK.webp"
-                      alt="Dětský pokoj v bytě 3+KK – interiérová vizualizace"
+                      src="img/H_01.webp"
+                      alt="Vstupní hala bytového centra VIVA – vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-viva"
                     />
                   </div>
                   <div class="swiper-slide">
                     <img
-                      src="img/6_3KK.webp"
-                      alt="Kuchyňská linka v moderním bytě 3+KK – interiérová vizualizace"
+                      src="img/H_02.webp"
+                      alt="Vstupní hala bytového centra VIVA – vizualizace"
                       loading="lazy"
                       decoding="async"
-                    />
-                  </div>
-                  <div class="swiper-slide">
-                    <img
-                      src="img/7_3KK.webp"
-                      alt="Obývací pokoj moderního bytu 3+KK – interiérová vizualizace"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div class="swiper-slide">
-                    <img
-                      src="img/8_3KK.webp"
-                      alt="Kuchyně propojená s obývacím prostorem – byt 3+KK"
-                      loading="lazy"
-                      decoding="async"
+                      data-gallery="projekt-viva"
                     />
                   </div>
                 </div>
@@ -226,7 +228,114 @@
             </div>
           </article>
 
-          <article class="project project--spaced">
+          <article class="project">
+            <h4>Moderní byt 3+KK</h4>
+
+            <h6 class="project-meta">
+              Interiér · Vysočina · Rezidenční developerský projekt · 2025
+            </h6>
+
+            <p class="project-text">
+              Byt určený pro menší rodinu vznikl na základě technických podkladů
+              interiérové designérky - Ing. Simony Avratové. Cílem bylo vytvořit
+              prostor, který pomůže budoucím klientům lépe si představit
+              dispozici, materiály a atmosféru bytu.
+            </p>
+
+            <div class="project-gallery">
+              <div class="project-swiper swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="img/2_3KK.webp"
+                      alt="Chodba moderního bytu 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/3_3KK.webp"
+                      alt="Koupelna v moderním bytě 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/4_3KK.webp"
+                      alt="Ložnice moderního bytu 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/5_3KK.webp"
+                      alt="Dětský pokoj v bytě 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/6_3KK.webp"
+                      alt="Kuchyňská linka v moderním bytě 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/7_3KK.webp"
+                      alt="Obývací pokoj moderního bytu 3+KK – interiérová vizualizace"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="img/8_3KK.webp"
+                      alt="Kuchyně propojená s obývacím prostorem – byt 3+KK"
+                      loading="lazy"
+                      decoding="async"
+                      data-gallery="projekt-1"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  class="gallery-arrow prev swiper-button-prev"
+                  aria-label="Předchozí obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  class="gallery-arrow next swiper-button-next"
+                  aria-label="Další obrázek"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
             <h4>Moderní byt 2+KK</h4>
 
             <h6 class="project-meta">
@@ -235,8 +344,8 @@
 
             <p class="project-text">
               Další projekt na základě podkladů interiérové designérky Ing.
-              Simony Avratové. Menší byt pro pár nebo jednotlivce ve stejné
-              lokalitě.
+              Simony Avratové. Kompaktní byt ve stejné lokalitě, navržený pro
+              pár nebo jednotlivce. Důraz na efektivní využití prostoru.
             </p>
 
             <div class="project-gallery">
@@ -248,6 +357,7 @@
                       alt="Chodba moderního bytu 2+KK – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -256,6 +366,7 @@
                       alt="Šatna v bytě 2+KK – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -264,6 +375,7 @@
                       alt="Samostatné WC v bytě 2+KK – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -272,6 +384,7 @@
                       alt="Koupelna moderního bytu 2+KK – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -280,6 +393,7 @@
                       alt="Ložnice v moderním bytě 2+KK – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -288,6 +402,7 @@
                       alt="Obývací pokoj s kuchyní – byt 2+KK"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -296,6 +411,7 @@
                       alt="Kuchyně v moderním bytě 2+KK – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-2"
                     />
                   </div>
                 </div>
@@ -329,7 +445,7 @@
             <h4>Rekonstrukce koupelny</h4>
 
             <h6 class="project-meta">
-              Interiér · Morava · Privátní rezidenční projekt · 2024/2025
+              Interiér · Morava · Privátní rezidenční projekt · 2024
             </h6>
 
             <p class="project-text">
@@ -346,6 +462,7 @@
                       alt="Moderní koupelna – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -354,6 +471,7 @@
                       alt="Detail koupelny s umyvadlem – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -362,6 +480,7 @@
                       alt="Sprchový kout v moderní koupelně – vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -370,6 +489,7 @@
                       alt="Koupelnový nábytek na míru – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -378,6 +498,7 @@
                       alt="Detail obkladů v koupelně – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -386,6 +507,7 @@
                       alt="Celkový pohled na moderní koupelnu – vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                   <div class="swiper-slide">
@@ -394,6 +516,7 @@
                       alt="Atmosféra moderní koupelny – interiérová vizualizace"
                       loading="lazy"
                       decoding="async"
+                      data-gallery="projekt-3"
                     />
                   </div>
                 </div>
@@ -481,10 +604,8 @@
               <div class="about-box">
                 <h5>Jak pracuji</h5>
                 <h6>
-                  Dodávám vizualizace rychle, v dohodnutém termínu a s
-                  konzistentní kvalitou, přičemž spojuji technickou přesnost s
-                  vizuální kvalitou – pracuji jak z představy, tak z milimetrově
-                  přesných CAD výkresů.
+                  Dodávám vizualizace rychle a v dohodnutém termínu – pracuji
+                  jak z volné představy, tak z milimetrově přesných CAD výkresů.
                 </h6>
               </div>
 
@@ -492,10 +613,8 @@
                 <h5>Co mohu nabídnout</h5>
                 <h6>
                   Ve scénách používám reálně existující produkty od světových
-                  značek, což zvyšuje realismus a umožňuje lépe odhadnout
-                  finální cenu a možnosti realizace. Technická přesnost je
-                  základ, ale vizualizace musí hlavně zaujmout a fungovat pro
-                  lidi.
+                  značek – zvyšuje to realismus a klientům pomáhá lépe odhadnout
+                  výslednou cenu realizace.
                 </h6>
               </div>
             </div>
@@ -620,16 +739,22 @@
 
     <footer>
       <div class="container">
-        <small>© 2025 kubazmedlova - Jakub Marek</small>
+        <small>© 2026 kubazmedlova - Jakub Marek</small>
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+      defer
+    ></script>
 
-    <script src="js/carousel.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/form.js"></script>
+    <script src="js/carousel.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script src="js/form.js" defer></script>
   </body>
 </html>
