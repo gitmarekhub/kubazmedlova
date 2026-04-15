@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         prevEl: el.querySelector(".swiper-button-prev"),
       },
       breakpoints: {
-        0:    { slidesPerView: 1 },
-        768:  { slidesPerView: 2 },
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
         1024: { slidesPerView: 3 },
       },
     });
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".project-swiper").forEach((swiperEl) => {
     const originalSlides = swiperEl.querySelectorAll(
-      ".swiper-slide:not(.swiper-slide-duplicate)"
+      ".swiper-slide:not(.swiper-slide-duplicate)",
     );
 
     // Předem načti rozměry všech obrázků v galerii
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       img.addEventListener("click", async () => {
         const urls = Array.from(originalSlides).map((s) =>
-          s.querySelector("img").getAttribute("src")
+          s.querySelector("img").getAttribute("src"),
         );
 
         // Načti rozměry všech fotek (z cache pokud dostupné)
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
           urls.map(async (src) => {
             const size = await getImageSize(src);
             return { src, w: size.w, h: size.h };
-          })
+          }),
         );
 
         const pswp = document.querySelector(".pswp");
@@ -84,7 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
           hideAnimationDuration: 200,
         };
 
-        const gallery = new PhotoSwipe(pswp, PhotoSwipeUI_Default, items, options);
+        const gallery = new PhotoSwipe(
+          pswp,
+          PhotoSwipeUI_Default,
+          items,
+          options,
+        );
         gallery.init();
       });
     });
